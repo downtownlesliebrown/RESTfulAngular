@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>RESTful Angular</title>
+    </head>
+    <body ng-app="Todo" ng-controller="Todo as td">
+        <div>
+            <table>
+				<thead>
+					<tr>
+						<th>TITLE</th>
+						<th>DESCRIPTION</th>
+					</tr>
+				</thead>
+                <tbody>
+					<tr ng-repeat="item in td.items">
+                        <td>{{item.title}}</td>
+                        <td>{{item.description}}</td>
+                    </tr>
+
+                    Title: <input ng-model="td.newItem.title">
+                    Description: <input ng-model="td.newItem.description">
+                    <button ng-click="td.addItem()">Add Item</button>
+        </div>
+
+        <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="controllers.js"></script>
+        <script type="text/javascript" src="services.js"></script>
+    </body>
+
+</html>
