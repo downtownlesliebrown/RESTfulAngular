@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
         <meta charset="utf-8">
         <title>RESTful Angular</title>
     </head>
-    <body ng-app="Todo" ng-controller="Todo as td">
-        <div>
-            <table>
-				<thead>
-					<tr>
-						<th>TITLE</th>
-						<th>DESCRIPTION</th>
-					</tr>
-				</thead>
-                <tbody>
-					<tr ng-repeat="item in td.items">
-                        <td>{{item.title}}</td>
-                        <td>{{item.description}}</td>
-                    </tr>
+    <!-- <body ng-app="Todo" ng-controller="Todo as td"> -->
+    <!-- <body> -->
+    <body ng-app="routerApp">
 
-                    Title: <input ng-model="td.newItem.title">
-                    Description: <input ng-model="td.newItem.description">
-                    <button ng-click="td.addItem()">Add Item</button>
+
+        <nav class="navbar navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" ui-sref="#">To do</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a class="nav-link" ui-sref="todo">To-Do List</a></li>
+                <li><a class="nav-link" ui-sref="cnorris">Chuck Norris Yokes</a></li>
+            </ul>
+        </nav>
+
+        <div class="container">
+            <div ui-view></div>
         </div>
 
         <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-        <script type="text/javascript" src="app.js"></script>
-        <script type="text/javascript" src="controllers.js"></script>
-        <script type="text/javascript" src="services.js"></script>
+        <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+        <script type="text/javascript" src="src/app.js"></script>
+
+        <script type="text/javascript" src="src/controllers_todo.js"></script>
+        <script type="text/javascript" src="src/controllers_chucknorris.js"></script>
+
+        <script type="text/javascript" src="src/services_chucknorris.js"></script>
+        <script type="text/javascript" src="src/services_todo.js"></script>
     </body>
 
 </html>

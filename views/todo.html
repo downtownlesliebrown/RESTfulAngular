@@ -1,0 +1,34 @@
+
+<div>
+    <table>
+		<thead>
+			<tr>
+				<th>TITLE</th>
+				<th>DESCRIPTION</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+			</tr>
+		</thead>
+        <tbody>
+            <tr>
+                Title: <input ng-model="td.newItem.title">
+                Description: <input ng-model="td.newItem.description">
+                <button ng-click="td.addItem()">Add Item</button>
+            </tr>
+			<tr ng-repeat="item in td.items">
+                <td>
+                    <span ng-show="td.editMode !== item.id">{{item.title}}</span>
+                    <input ng-show="td.editMode === item.id" ng-model="td.currentItem.title">
+                </td>
+                <td>
+                    <span ng-show="td.editMode !== item.id">{{item.description}}</span>
+                    <input ng-show="td.editMode === item.id" ng-model="td.currentItem.description">
+                </td>
+                <td><button ng-click="td.setEdit(item)" ng-show="td.editMode !== item.id">Edit</button></td>
+                <td><button ng-click="td.saveEdit()" ng-show="td.editMode === item.id">Save</button></td>
+                <td><button ng-click="td.removeItem(item.id)" ng-show="td.editMode !== item.id">Delete</button></td>
+                <td><button ng-click="td.cancelEdit()" ng-show="td.editMode === item.id">Cancel Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

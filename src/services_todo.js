@@ -1,5 +1,5 @@
 (function(){
-	angular.module('Todo')
+	angular.module('routerApp')
         .factory('Item', item);
 
 		function item($http){
@@ -13,40 +13,35 @@
 				});
 			}
 
-			function addOne(item){
+			function add(item){
 				return $http.post(ref,item).success(function(data){
+					// return data;
+				});
+			}
+
+			function remove(id){
+				return $http.delete(ref + '/' + id).success(function(data){
 					return data;
 				});
 			}
 
+			function edit(currentItem){
+				return $http.put(ref + '/' + currentItem.id, currentItem).then(function(data){
+					return data;
+				}, function(err){
+					console.log(err);
+				});
+			}
+
+
+
 			var service = {
 			    list: list,
-				addOne: addOne
+				add: add,
+				remove: remove,
+				edit: edit
 			};
 			return service;
         }
     }
 )();
-
-
-
-// showQuote();
-//
-// function showQuote(){
-//     quote = "hello world";
-//     return quote;
-// };
-
-
-
-
-// var returnObj2 = {
-//     quote: quote
-// };
-// return returnObj2;
-
-
-// var service = {
-//     showQuote: showQuote
-// };
-// return service;
